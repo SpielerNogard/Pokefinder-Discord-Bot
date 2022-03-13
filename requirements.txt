@@ -1,0 +1,15 @@
+aiohttp==3.7.4.post0
+async-timeout==3.0.1
+attrs==21.4.0
+chardet==4.0.0
+ffmpeg-python==0.2.0
+future==0.18.2
+idna==3.3
+imageio-ffmpeg==0.4.5
+multidict==6.0.2
+numpy==1.22.3
+paho-mqtt==1.6.1
+py-cord==2.0.0b1
+python-dotenv==0.19.2
+typing_extensions==4.1.1
+yarl==1.7.2
