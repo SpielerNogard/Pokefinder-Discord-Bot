@@ -12,7 +12,7 @@ load_dotenv()
 
 
 bot = discord.Bot()
-sender = MQTTSender('messages/in')
+#sender = MQTTSender('messages/in')
 broker = MQTTBroker('messages/out')
 logger = get_logger('INFO')
 token = os.getenv('bot_token')
@@ -50,6 +50,7 @@ async def on_message(message):
                 'message_id':message_id,
                 'content':message_content,
                 'user':user_id}
+    sender = MQTTSender('messages/in')
     sender.send_message(message_info)
     logger.info(message)
 
@@ -66,9 +67,7 @@ async def on_ready():
 async def message_in():
     logger.info('checking messages')
     message = broker.next_message()
-    if message is None:
-        logger.info('no new messages received')
-    else:
+    if message is not None:
         if message.get('user') is not None:
             receiver = await get_user(message.get('user'))
         elif message.get('channel') is not None:
